@@ -1,0 +1,44 @@
+{
+  "tasks": {
+    "dev": "deno run --allow-all --env-file=.env main.ts",
+    "poll": "deno run --allow-all --env-file=.env scripts/poll.ts",
+    "set-webhook": "deno run --allow-all --env-file=.env scripts/set_webhook.ts",
+    "test": "deno test --allow-all phone_test.ts",
+    "check": "deno check main.ts scripts/poll.ts src/bot/handlers.ts src/utils/phone.ts",
+    "deploy": "deno run --allow-all scripts/deploy.ts",
+    "deploy:prod": "deno run --allow-all scripts/deploy.ts --prod",
+    "deploy:env": "echo \"Please set the following env vars in Deno Deploy dashboard: BOT_TOKEN, PUBLIC_BASE_URL, WEBHOOK_PATH_SECRET, WEBHOOK_SECRET, DEFAULT_REGION\""
+  },
+  "fmt": {
+    "useTabs": false,
+    "lineWidth": 100,
+    "indentWidth": 2,
+    "semiColons": true,
+    "singleQuote": false,
+    "proseWrap": "preserve"
+  },
+  "lint": {
+    "rules": {
+      "tags": [
+        "recommended"
+      ]
+    }
+  },
+  "imports": {
+    "grammy": "https://deno.land/x/grammy@v1.34.0/mod.ts",
+    "grammy/types": "https://deno.land/x/grammy@v1.34.0/types.ts",
+    "libphonenumber-js": "npm:libphonenumber-js@1.11.19"
+  },
+  "compilerOptions": {
+    "strict": true,
+    "noImplicitAny": true
+  },
+  "deploy": {
+    "project": "9d8d7749-59cf-4e34-aff9-277ecfa5fd93",
+    "exclude": [
+      "**/node_modules"
+    ],
+    "include": [],
+    "entrypoint": "main.ts"
+  }
+}
